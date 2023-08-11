@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Login/LoginLayout.cshtml";
+}
+
+<div class="login">
+    <h1>Login</h1>
+    <form method="post" action=Login/Verify>
+        <input type="text" name="Name" placeholder="Username" required="required" />
+        <input type="password" name="Password" placeholder="Password" required="required" />
+        <input type="text" name="User" list="Users" placeholder="Please select a user type" autocomplete="off" />
+            <datalist id="Users">
+            <option>Employee</option>
+            <option>Farmer</option>
+            </datalist>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+    </form>
+</div>
+

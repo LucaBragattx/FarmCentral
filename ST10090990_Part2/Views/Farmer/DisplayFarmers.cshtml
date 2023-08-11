@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ST10090990_Part2.Models.Farmers>
+
+@{
+    ViewData["Title"] = "DisplayFarmers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>DisplayFarmers</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmerPassword)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmerPassword)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.FarmerID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.FarmerID }) |
+                    @Html.ActionLink("Products", "Products", new { id = item.FarmerID}) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.FarmerID})
+                    
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

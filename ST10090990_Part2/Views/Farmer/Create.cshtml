@@ -1,0 +1,44 @@
+﻿@model ST10090990_Part2.Models.Farmers
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Farmers</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FarmerID" class="control-label"></label>
+                <input asp-for="FarmerID" name="txtFarmerID" class="form-control" />
+                <span asp-validation-for="FarmerID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FarmerName" class="control-label"></label>
+                <input asp-for="FarmerName" name="txtFarmerName" class="form-control" />
+                <span asp-validation-for="FarmerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FarmerPassword" class="control-label"></label>
+                <input asp-for="FarmerPassword" name="txtFarmerPass" class="form-control" />
+                <span asp-validation-for="FarmerPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="DisplayFarmers">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

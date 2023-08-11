@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ST10090990_Part2.Models.Products>
+
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Products</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+    
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<form method="get" action="@Url.Action("Products")">
+    <div>
+        <label for="ProductName">Product Name:</label>
+        <input type="text" id="ProductName" name="ProductName" class="form-control" value="@ViewBag.FilteredProductName"/>
+    </div>
+    <button type ="submit" class="btn btn-primary">Filter</button>
+</form>
+
+<form>
+    @using (Html.BeginForm("Products", "Farmer", FormMethod.Get))
+    {
+        <input type="date" name="start" value="@ViewBag.FilteredProductStart" />
+        <input type="date" name="end" value="@ViewBag.FilteredProductEnd" />
+        <input type="submit" name="submit" class="btn btn-primary" value="Search" />
+    }
+</form>
+
+
+
+
+
+
